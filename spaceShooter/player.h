@@ -7,7 +7,7 @@
 
 using namespace sf;
 
-class player
+class Player
 {
 private:
 	Texture* texture;
@@ -26,10 +26,10 @@ private:
 
 	int score;
 public:
-	player();
-	virtual ~player();
+	Player(Texture* texture);
+	virtual ~Player();
 	void Movement();
 	void Update();
-	void Draw();
+	void Draw(RenderTarget& target);
 };
 

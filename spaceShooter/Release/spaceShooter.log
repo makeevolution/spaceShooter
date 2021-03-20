@@ -1,0 +1,8 @@
+﻿  Game.cpp
+  main.cpp
+  player.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 93 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  spaceShooter.vcxproj -> C:\Users\ajb266\Documents\Aldo\spaceShooter\Release\spaceShooter.exe

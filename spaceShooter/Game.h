@@ -6,7 +6,7 @@ class Game
 {
 private:
 	RenderWindow* window;
-	player *player;
+	Player *player;
 	Texture playerTexture;
 
 public:
