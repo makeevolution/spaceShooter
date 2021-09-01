@@ -1,2 +1,6 @@
 ﻿  Game.cpp
-  spaceShooter.vcxproj -> C:\Users\ajb266\Documents\Aldo\spaceShooter\Debug\spaceShooter.exe
+  main.cpp
+  player.cpp
+  Generating Code...
+  spaceShooter.vcxproj -> C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\Debug\spaceShooter.exe
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(4569,5): warning MSB3026: Could not copy "Debug\spaceShooter.pdb" to "C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\Debug\spaceShooter.pdb". Beginning retry 1 in 1000ms. The process cannot access the file 'C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\Debug\spaceShooter.pdb' because it is being used by another process. The file is locked by: "Microsoft OneDrive (17440)"

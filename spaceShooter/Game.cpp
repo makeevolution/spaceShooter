@@ -1,23 +1,33 @@
 #include "Game.h"
 
+//constructor
 Game::Game(RenderWindow* window) {
 	this->window = window;
 	this->window->setFramerateLimit(60);
-			
-		//Init textures
+	//Init textures
 	playerTexture.loadFromFile("Textures/ship.png");
-	//Init player
-	player = new Player(&this->playerTexture);
-}
 
+	//Init player(s)
+	players.push_back(Player(&playerTexture));
+	
+}
+//destructor
 Game::~Game() {
-	delete player;
-}
 
+}
+//function definitions
 void Game::Update() {
-	player->Update();
+	for (size_t i = 0; i < players.size(); i++)
+	{
+		players[i].Update();
+	}
 }
 
 void Game::Draw() {
-	player->Draw(*window);
+	this->window->clear();
+	for (size_t i = 0; i < this->players.size(); i++)
+	{
+		players[i].Draw(*this->window);
+	}
+	this->window->display();
 }
