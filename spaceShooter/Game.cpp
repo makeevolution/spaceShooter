@@ -6,10 +6,12 @@ Game::Game(RenderWindow* window) {
 	this->window->setFramerateLimit(60);
 	//Init textures
 	playerTexture.loadFromFile("Textures/ship.png");
+	bulletTexture.loadFromFile("Textures/bullet.png");
 
 	//Init player(s)
-	players.push_back(Player(&playerTexture));
-	
+	players.push_back(Player(&playerTexture, &bulletTexture));
+	players.push_back(Player(&playerTexture, &bulletTexture, Keyboard::I,
+		Keyboard::K, Keyboard::J, Keyboard::L, Keyboard::RShift));
 }
 //destructor
 Game::~Game() {
@@ -19,7 +21,7 @@ Game::~Game() {
 void Game::Update() {
 	for (size_t i = 0; i < players.size(); i++)
 	{
-		players[i].Update();
+		players[i].Update(this->window);
 	}
 }
 

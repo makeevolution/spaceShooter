@@ -1,1 +1,10 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v150\Microsoft.Cpp.WindowsSDK.targets(46,5): error MSB8036: The Windows SDK version 10.0 was not found. Install the required version of Windows SDK or change the SDK version in the project property pages or by right-clicking the solution and selecting "Retarget solution".
+﻿  player.cpp
+C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.h(40,15): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.cpp(19,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.cpp(20,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.cpp(69,20): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+  spaceShooter.vcxproj -> C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\Debug\spaceShooter.exe

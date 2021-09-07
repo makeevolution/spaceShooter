@@ -10,6 +10,7 @@ private:
 	//Create a vector of the players 6:50
 	std::vector<Player> players;
 	Texture playerTexture;
+	Texture bulletTexture;
 
 public:
 	//constructor

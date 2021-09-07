@@ -5,7 +5,7 @@ unsigned Player::players = 0;
 
 enum controls { UP = 0, DOWN=1,LEFT=2,RIGHT=3,SHOOT=4};
 
-Player::Player(Texture* texture,
+Player::Player(Texture* texture, Texture *bulletTexture,
 	int UP, int DOWN,
 	int LEFT, int RIGHT,
 	int SHOOT
@@ -16,13 +16,22 @@ Player::Player(Texture* texture,
 	this->texture = texture;
 	this->sprite.setTexture(*this->texture);
 
-	this->sprite.setScale(0.12f, 0.12f);
+	this->xScale = 0.12;
+	this->yScale = 0.12;
+	this->sprite.setScale(xScale, yScale);
+
+	this->shootTimerMax = 25;
+	this->shootTimer = this->shootTimerMax;
+	this->damageTimer = 25;
+	this->damageTimerMax = this->damageTimer;
 
 	this->controls[controls::UP] = UP;
 	this->controls[controls::DOWN] = DOWN;
 	this->controls[controls::LEFT] = LEFT;
 	this->controls[controls::RIGHT] = RIGHT;
 	this->controls[controls::SHOOT] = SHOOT;
+
+	this->bulletTexture = bulletTexture;
 
 	Player::players++;
 	this->playerNumber = Player::players;
@@ -36,18 +45,43 @@ void Player::Movement() {
 		this->sprite.move(0.f, -10.f);
 	if (Keyboard::isKeyPressed(Keyboard::Key(this->controls[controls::DOWN])))
 		this->sprite.move(0.f, 10.f);
+		std::cout << bullets.size();
 	if (Keyboard::isKeyPressed(Keyboard::Key(this->controls[controls::LEFT])))
 		this->sprite.move(-10.f, 0.f);
 	if (Keyboard::isKeyPressed(Keyboard::Key(this->controls[controls::RIGHT])))
 		this->sprite.move(10.f, 0.f);
 	if (Keyboard::isKeyPressed(Keyboard::Key(this->controls[controls::SHOOT])))
 	{
+		// Create a new bullet, by sending in the bullet's texture and the 
+		// current player's position
+		this->bulletPos = { this->sprite.getPosition().x + this->sprite.getTexture()->getSize().x * xScale
+							,this->sprite.getPosition().y + this->sprite.getTexture()->getSize().y * yScale / 2};
+
+		this->bullets.push_back(Bullet(bulletTexture,this->bulletPos));
 	}
 }
-void Player::Update() {
-	this->Movement();
 
+// Both update and draw are always called by Game.cpp, which in turn is called
+// in a very fast loop by main.cpp
+
+void Player::Update(RenderWindow* window) {
+	this->Movement();
+	float windowWidth = window->getSize().x;
+	for (size_t i = 0; i < this->bullets.size(); i++)
+	{
+		// Every bullet in the vector will move by 15 pixels
+		this->bullets[i].Update();
+		// If the bullet goes out of window, delete the bullet from the list of bullets!
+		if (window->getSize().x < bullets[i].getPosition().x)
+		{
+			bullets.erase(bullets.begin()+i);
+		}
+	}
 };
 void Player::Draw(RenderTarget& target) {
 	target.draw(this->sprite);
+	for (size_t i = 0; i < this->bullets.size(); i++)
+	{
+		this->bullets[i].Draw(target);
+	}
 };
