@@ -7,6 +7,11 @@ class Game
 private:
 	//Create the window of the game
 	RenderWindow* window;
+
+	Font font;
+	std::vector<Text> followPlayerTexts;
+	std::vector<Text> staticPlayerTexts;
+
 	//Create a vector of the players 6:50
 	std::vector<Player> players;
 	Texture playerTexture;
@@ -25,6 +30,9 @@ public:
 	//Setters
 	
 	//Functions
+	void InitUI();
+	void UpdateUI();
+	void DrawUI();
 	void Update();
 	void Draw();
 };

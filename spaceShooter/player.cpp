@@ -45,23 +45,27 @@ void Player::Movement() {
 		this->sprite.move(0.f, -10.f);
 	if (Keyboard::isKeyPressed(Keyboard::Key(this->controls[controls::DOWN])))
 		this->sprite.move(0.f, 10.f);
-		std::cout << bullets.size();
 	if (Keyboard::isKeyPressed(Keyboard::Key(this->controls[controls::LEFT])))
 		this->sprite.move(-10.f, 0.f);
 	if (Keyboard::isKeyPressed(Keyboard::Key(this->controls[controls::RIGHT])))
 		this->sprite.move(10.f, 0.f);
-	if (Keyboard::isKeyPressed(Keyboard::Key(this->controls[controls::SHOOT])))
+	
+}
+
+void Player::Combat() {
+	if (Keyboard::isKeyPressed(Keyboard::Key(this->controls[controls::SHOOT]))
+		&& this->shootTimer >= this->shootTimerMax)
 	{
 		// Create a new bullet, by sending in the bullet's texture and the 
 		// current player's position
-		this->bulletPos = { this->sprite.getPosition().x + this->sprite.getTexture()->getSize().x * xScale
-							,this->sprite.getPosition().y + this->sprite.getTexture()->getSize().y * yScale / 2};
+		this->bulletPos = { this->getPosition().x + this->getSize().x * xScale
+							,this->getPosition().y + this->getSize().y * yScale / 2 };
 
-		this->bullets.push_back(Bullet(bulletTexture,this->bulletPos));
+		this->bullets.push_back(Bullet(bulletTexture, this->bulletPos));
+		this->shootTimer = 0;
 	}
 }
-
-// Both update and draw are always called by Game.cpp, which in turn is called
+// Both update and draw functions below are always called by Game.cpp, which in turn is called
 // in a very fast loop by main.cpp
 
 void Player::Update(RenderWindow* window) {
@@ -77,6 +81,11 @@ void Player::Update(RenderWindow* window) {
 			bullets.erase(bullets.begin()+i);
 		}
 	}
+	if (this->shootTimer < this->shootTimerMax)
+		shootTimer = shootTimer++;
+	if (this->damageTimer < this->damageTimerMax)
+		damageTimer = damageTimer++;
+	this->Combat();
 };
 void Player::Draw(RenderTarget& target) {
 	target.draw(this->sprite);

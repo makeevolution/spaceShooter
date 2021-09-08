@@ -50,8 +50,14 @@ public:
 	void Movement();
 	void Update(RenderWindow* window);
 	void Draw(RenderTarget& target);
-	
+	void Combat();
 	static unsigned players;
+
+	//Accessors
+	inline const Vector2f getPosition()const { return this->sprite.getPosition(); }
+	inline const Vector2u getSize()const { return this->sprite.getTexture()->getSize(); }
+	inline const Vector2f getScale()const { return { this->xScale, this->yScale }; }
+	inline const String getHpAsString()const { return std::to_string(this->hp) + "/" + std::to_string(this->hpMax); }
 
 };
 
