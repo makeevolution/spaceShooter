@@ -1,10 +1,12 @@
 #include "Bullet.h"
 
-Bullet::Bullet(Texture *texture, Vector2f position, 
-	float maxSpeed, Vector2f direction, float acceleration)
+Bullet::Bullet(Texture* texture, Vector2f position, Vector2f direction,
+	float initialSpeed, float maxSpeed, float acceleration)
 {
 	this->texture = texture;
 	this->sprite.setTexture(*this->texture);
+
+	this->initialSpeed = initialSpeed;
 	this->maxSpeed = maxSpeed;
 
 	this->currentVelocity = currentVelocity;
@@ -13,6 +15,10 @@ Bullet::Bullet(Texture *texture, Vector2f position,
 
 	this->sprite.setScale(0.15f, 0.15f);
 	this->sprite.setPosition(position);
+
+	this->currentVelocity.x = this->initialSpeed * this->direction.x;
+	this->currentVelocity.y = this->initialSpeed * this->direction.y;
+
 }
 
 Bullet::~Bullet()

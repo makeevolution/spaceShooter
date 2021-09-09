@@ -63,8 +63,9 @@ void Player::Combat() {
 
 		this->bullets.push_back(Bullet(bulletTexture, 
 									   this->bulletPos, 
-									   25.f, 
-									   Vector2f(1.f,0.f),
+									   Vector2f(1.f, 0.f),
+									   1.f,
+									   25.f,
 									   1.f));
 		this->shootTimer = 0;
 	}

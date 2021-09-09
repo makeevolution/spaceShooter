@@ -12,14 +12,15 @@ private:
 	Texture* texture;
 	Sprite sprite;
 
+	float initialSpeed;
 	float maxSpeed;
 	Vector2f direction;
 	Vector2f currentVelocity;
 	float acceleration;
 
 public:
-	Bullet(Texture* texture, Vector2f position,
-		float maxSpeed, Vector2f direction, float acceleration);
+	Bullet(Texture* texture, Vector2f position, Vector2f direction,
+		float initialSpeed, float maxSpeed, float acceleration);
 	virtual ~Bullet();
 
 	void Movement();
