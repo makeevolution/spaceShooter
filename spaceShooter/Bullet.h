@@ -11,11 +11,15 @@ class Bullet {
 private:
 	Texture* texture;
 	Sprite sprite;
-	Vector2f maxVelocity;
+
+	float maxSpeed;
+	Vector2f direction;
+	Vector2f currentVelocity;
+	float acceleration;
 
 public:
-	Bullet(Texture *texture, Vector2f position,
-		Vector2f maxVelocity = Vector2f(15.f, 0.f));
+	Bullet(Texture* texture, Vector2f position,
+		float maxSpeed, Vector2f direction, float acceleration);
 	virtual ~Bullet();
 
 	void Movement();

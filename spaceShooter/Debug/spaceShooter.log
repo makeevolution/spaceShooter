@@ -1,8 +1,4 @@
-﻿  Game.cpp
-C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.h(40,15): warning C4305: 'initializing': truncation from 'double' to 'float'
-  main.cpp
-C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.h(40,15): warning C4305: 'initializing': truncation from 'double' to 'float'
-  player.cpp
+﻿  player.cpp
 C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.h(40,15): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.cpp(19,21): warning C4305: '=': truncation from 'double' to 'float'
 C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.cpp(20,21): warning C4305: '=': truncation from 'double' to 'float'
@@ -11,5 +7,4 @@ C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player
           [
               T=unsigned int
           ]
-  Generating Code...
   spaceShooter.vcxproj -> C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\Debug\spaceShooter.exe

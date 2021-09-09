@@ -61,7 +61,11 @@ void Player::Combat() {
 		this->bulletPos = { this->getPosition().x + this->getSize().x * xScale
 							,this->getPosition().y + this->getSize().y * yScale / 2 };
 
-		this->bullets.push_back(Bullet(bulletTexture, this->bulletPos));
+		this->bullets.push_back(Bullet(bulletTexture, 
+									   this->bulletPos, 
+									   25.f, 
+									   Vector2f(1.f,0.f),
+									   1.f));
 		this->shootTimer = 0;
 	}
 }
