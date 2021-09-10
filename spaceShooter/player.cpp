@@ -49,7 +49,6 @@ void Player::Movement() {
 		this->sprite.move(-10.f, 0.f);
 	if (Keyboard::isKeyPressed(Keyboard::Key(this->controls[controls::RIGHT])))
 		this->sprite.move(10.f, 0.f);
-	
 }
 
 void Player::Combat() {

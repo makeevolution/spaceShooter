@@ -1,5 +1,6 @@
 #pragma once
-#include "player.h" 
+#include "player.h"
+#include "enemy.h"
 using namespace sf;
 
 class Game
@@ -8,14 +9,19 @@ private:
 	//Create the window of the game
 	RenderWindow* window;
 
+	//Create a vector of texts
 	Font font;
 	std::vector<Text> followPlayerTexts;
 	std::vector<Text> staticPlayerTexts;
+
+	//Create a vector of enemies
+	std::vector<Enemy> enemies;
 
 	//Create a vector of the players 6:50
 	std::vector<Player> players;
 	Texture playerTexture;
 	Texture bulletTexture;
+	Texture enemyTexture;
 
 public:
 	//constructor

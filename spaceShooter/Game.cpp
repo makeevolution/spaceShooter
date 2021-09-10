@@ -7,6 +7,7 @@ Game::Game(RenderWindow* window) {
 	//Init textures
 	playerTexture.loadFromFile("Textures/ship.png");
 	bulletTexture.loadFromFile("Textures/bullet.png");
+	enemyTexture.loadFromFile("Textures/bullet.png");
 
 	//Init fonts
 	this->font.loadFromFile("Fonts/Dosis-Light.ttf");
@@ -16,6 +17,19 @@ Game::Game(RenderWindow* window) {
 	players.push_back(Player(&playerTexture, &bulletTexture, Keyboard::I,
 		Keyboard::K, Keyboard::J, Keyboard::L, Keyboard::RShift));
 
+	//Init enemies
+	this->enemies.push_back(Enemy(
+		&enemyTexture,
+		this->window->getSize(),
+		Vector2f(0.f, 0.f),
+		Vector2f(-1.f, 0.f),
+		Vector2f(0.1f, 0.1f),
+		0,
+		rand() % 3 + 1,
+		3,
+		1
+	));
+	// VID 11 MINUTE 11
 	this->InitUI();
 }
 //destructor
@@ -70,10 +84,16 @@ void Game::DrawUI() {
 		this->window->draw(this->staticPlayerTexts[i]);
 	}
 }
+
 void Game::Update() {
 	for (size_t i = 0; i < players.size(); i++)
 	{
 		players[i].Update(this->window);
+	}
+	
+	for (size_t i = 0; i < enemies.size(); i++)
+	{
+		enemies[i].Update();
 	}
 	this->UpdateUI();
 }
@@ -83,6 +103,11 @@ void Game::Draw() {
 	for (size_t i = 0; i < this->players.size(); i++)
 	{
 		players[i].Draw(*this->window);
+	}
+
+	for (size_t i = 0; i < this->enemies.size(); i++)
+	{
+		this->enemies[i].Draw(*this->window);
 	}
 	this->DrawUI();
 	this->window->display();
