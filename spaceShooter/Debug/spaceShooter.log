@@ -2,21 +2,5 @@
 C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.h(40,15): warning C4305: 'initializing': truncation from 'double' to 'float'
   main.cpp
 C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.h(40,15): warning C4305: 'initializing': truncation from 'double' to 'float'
-  player.cpp
-C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.h(40,15): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.cpp(19,21): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.cpp(20,21): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\player.cpp(77,20): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-  Bullet.cpp
-  enemy.cpp
-C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\spaceShooter\enemy.cpp(16,39): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
   Generating Code...
-LINK : fatal error LNK1201: error writing to program database 'C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\Debug\spaceShooter.pdb'; check for insufficient disk space, invalid path, or insufficient privilege
+  spaceShooter.vcxproj -> C:\Users\320145763\OneDrive\job\c++SpaceShooter\spaceShooter\Debug\spaceShooter.exe

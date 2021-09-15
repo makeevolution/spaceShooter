@@ -24,7 +24,7 @@ public:
 	virtual ~Bullet();
 
 	void Movement();
-	inline const FloatRect& getGlobalBounds()const { return this->sprite.getGlobalBounds(); }
+	inline FloatRect getGlobalBounds()const { return this->sprite.getGlobalBounds(); }
 	inline const Vector2f& getPosition()const { return this->sprite.getPosition(); }
 	void Update();
 	void Draw(RenderTarget& target);

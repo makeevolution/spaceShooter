@@ -1,6 +1,7 @@
 #pragma once
 #include "player.h"
 #include "enemy.h"
+
 using namespace sf;
 
 class Game
@@ -23,6 +24,9 @@ private:
 	Texture bulletTexture;
 	Texture enemyTexture;
 
+	float enemyTimer = 0.f;
+	float enemyTimerMax = 10.f;
+	float enemyMax=1;
 public:
 	//constructor
 	Game(RenderWindow *window);
@@ -41,5 +45,6 @@ public:
 	void DrawUI();
 	void Update();
 	void Draw();
+	void CheckCollision();
 };
 

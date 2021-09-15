@@ -29,8 +29,8 @@ Game::Game(RenderWindow* window) {
 		3,
 		1
 	));
-	// VID 11 MINUTE 11
 	this->InitUI();
+
 }
 //destructor
 Game::~Game() {
@@ -72,6 +72,25 @@ void Game::UpdateUI() {
 		this->staticPlayerTexts[i].setPosition(1920/2, 0);
 		this->staticPlayerTexts[i].setString("N/A");
 	}
+	this->CheckCollision();
+
+	if (enemies.size() < enemyMax && enemyTimer < enemyTimerMax) {
+			this->enemies.push_back(Enemy(
+				&enemyTexture,
+				this->window->getSize(),
+				Vector2f(0.f, 0.f),
+				Vector2f(-1.f, 0.f),
+				Vector2f(0.1f, 0.1f),
+				0,
+				rand() % 3 + 1,
+				3,
+				1
+			));
+			enemyTimer = enemyTimer + 1.0f;
+		}
+		else {
+			enemyTimer = 0.f;
+		}
 }
 
 void Game::DrawUI() {
@@ -90,12 +109,22 @@ void Game::Update() {
 	{
 		players[i].Update(this->window);
 	}
-	
-	for (size_t i = 0; i < enemies.size(); i++)
+	this->CheckCollision();
+
+	for (size_t i = 0; i < this->enemies.size(); i++)
 	{
-		enemies[i].Update();
+		this->enemies[i].Update();
+		//Create check to ensure enemies have size >0
+		if (this->enemies.size() > 0){
+			if (this->enemies[i].getPosition().x < 0)
+			{
+				this->enemies.erase(enemies.begin() + i);
+				break;
+			}
+		}
 	}
 	this->UpdateUI();
+
 }
 
 void Game::Draw() {
@@ -111,4 +140,18 @@ void Game::Draw() {
 	}
 	this->DrawUI();
 	this->window->display();
+}
+
+void Game::CheckCollision() {
+	for (size_t i = 0; i < this->players.size(); i++) {
+		for (size_t j = 0; j < this->enemies.size(); j++)
+		{
+			for (size_t k = 0; k < this->players[i].getBullets().size(); k++) {
+				if (this->players[i].getBullets()[k].getGlobalBounds().intersects(this->enemies[j].getGlobalBounds())) {
+					this->enemies.erase(enemies.begin() + j);
+					break;
+				}
+			}
+		}
+	}
 }

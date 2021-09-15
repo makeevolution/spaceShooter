@@ -35,8 +35,6 @@ Player::Player(Texture* texture, Texture *bulletTexture,
 
 	Player::players++;
 	this->playerNumber = Player::players;
-
-	std::cout << (this->playerNumber) << "\n";
 }
 Player::~Player(){}
 

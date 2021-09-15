@@ -20,6 +20,8 @@ public:
 	virtual ~Enemy();
 
 	//Accessors
+	inline FloatRect getGlobalBounds()const { return this->sprite.getGlobalBounds(); }
+	inline const Vector2f getPosition()const { return this->sprite.getPosition(); }
 	inline const int getDamage()const { return rand() % this->damageMax + this->damageMin; }
 	inline const int getHP()const { return this->hp;}
 	inline const int getHPMax()const { return this->hpMax; }
